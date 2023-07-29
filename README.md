@@ -21,8 +21,12 @@
 
 
 ### **資料分析與處理**
-資料分布
+在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性分析，
+從資料分布發現到
 
+
+
+對於訓練結果採用ROC(Receiver Operator Characteristic Curve)進行評分，
 
 
 ### **訓練結果**
