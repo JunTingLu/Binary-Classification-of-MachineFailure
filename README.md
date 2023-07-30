@@ -15,14 +15,17 @@
 - **Overstrain failure (OSF)**: 如果工具磨損和扭矩的乘積超過 L 品質變體為 11,000 minNm（M 為 12,000，H 為 13,000），則由於過度應變而導致處理失敗。
 - **Random failures (RNF)**: 每個處理過程有 0.1% 的機會在不考慮其過程參數的情況下失敗。
 
-從以下表格來看，
+### **資料分析與處理**
+在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。
+初步的資料如下，借用pandas套件更直觀去觀察前幾個欄位數值的情況，發現在TWF,HDF,PWF,OSF,RNF的欄位數值僅有0和1兩種可能，在這五個特徵下的處理不會有閥值設定的問題。而除此之外的其他特徵
+最後machine failure即是我們最終需要評估的重要指標也只有0和1兩種可能，因此最後把資料丟進模型訓練的過程將會是一個二元分類器
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/887e9b97-0e13-497d-a77d-59268900dd99)
 
+若將先前Air temperature,Process temperature,Rotational speed,Torque,Tool wear進行統計量計算，
 
-### **資料分析與處理**
-在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性分析，
-從資料分布發現到
+
+
 
 
 
