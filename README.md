@@ -34,7 +34,9 @@
 
 
 
-### **訓練結果**
+### **訓練與結果**
+由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
+
 對於訓練結果採用ROC(Receiver Operator Characteristic Curve)進行評分，
 
 
