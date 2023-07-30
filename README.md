@@ -2,18 +2,18 @@
 ### **資料講解**
 這次的題目屬於分類問題，主要透過分析機器可能故障的機率。
 首先解釋一下資料型別所代表的意義
-- **Type**: consisting of a letter L, M, or H for low, medium and high as product quality variants.
-- **Air temperature [K]**: generated using a random walk process later normalized to a standard deviation of 2 K around 300 K.
-- **Process temperature [K]**: generated using a random walk process normalized to a standard deviation of 1 K, added to the air temperature plus 10 K.
-- **Rotational speed [rpm]**: calculated from a power of 2860 W, overlaid with a normally distributed noise.
-- **Torque [Nm]**: torque values are normally distributed around 40 Nm with a Ïƒ = 10 Nm and no negative values.
-- **Tool wear [min]**: The quality variants H/M/L add 5/3/2 minutes of tool wear to the used tool in the process.
-- **Machine failure**: whether the machine has failed in this particular datapoint for any of the following failure modes are true.
-- **Tool wear failure (TWF)**: the tool will be replaced of fail at a randomly selected tool wear time between 200 ~ 240 mins.
-- **Heat dissipation failure (HDF)**: heat dissipation causes a process failure, if the difference between air and process temperature is below 8.6 K and the rotational speed is below 1380 rpm.
-- **Power failure (PWF)**: the product of torque and rotational speed (in rad/s) equals the power required for the process. If this power is below 3500 W or above 9000 W, the process fails.
-- **Overstrain failure (OSF)**: if the product of tool wear and torque exceeds 11,000 minNm for the L product variant (12,000 M, 13,000 H), the process fails due to overstrain.
-- **Random failures (RNF)**: each process has a chance of 0,1 % to fail regardless of its process parameters.
+- **Type**: 由字母 L、M 或 H 組成，代表產品的不同品質變體，分別為低、中、高品質。
+- **Air temperature [K]**: 使用隨機遊走過程生成，然後將其標準化為標準差為 2 K，圍繞著 300 K 的範圍。
+- **Process temperature [K]**: 使用隨機遊走過程生成，然後將其標準化為標準差為 1 K，並加上 10 K，以得到最終的處理溫度。處理溫度是在空氣溫度的基礎上進行計算的。
+- **Rotational speed [rpm]**: 由功率 2860 瓦特計算得出，並添加了一個服從正態分布的噪音。
+- **Torque [Nm]**: 扭矩值服從正態分布，平均值為 40 Nm，標準差為 10 Nm，且不會有負值。
+- **Tool wear [min]**: 不同品質變體 H/M/L 會分別給使用的工具增加 5/3/2 分鐘的工具磨損時間。
+- **Machine failure**: 此數據點中機器是否因任何故障模式而失效。
+- **Tool wear failure (TWF)**: 工具在使用過程中將在隨機選定的工具使用時間點（介於 200 到 240 分鐘之間）失效或需更換。
+- **Heat dissipation failure (HDF)**: 如果空氣溫度與處理溫度之間的差異小於 8.6 K，且旋轉速度低於 1380 rpm，則熱散失導致了一個處理失敗。
+- **Power failure (PWF)**: 扭矩和旋轉速度（以 rad/s 為單位）的乘積等於處理所需的功率。如果此功率低於 3500 瓦特或高於 9000 瓦特，則處理失敗。
+- **Overstrain failure (OSF)**: 如果工具磨損和扭矩的乘積超過 L 品質變體為 11,000 minNm（M 為 12,000，H 為 13,000），則由於過度應變而導致處理失敗。
+- **Random failures (RNF)**: 每個處理過程有 0.1% 的機會在不考慮其過程參數的情況下失敗。
 
 從以下表格來看，
 
