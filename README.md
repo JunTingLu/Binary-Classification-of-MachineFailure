@@ -1,7 +1,8 @@
 ﻿# Binary-Classification-of-MachineFailure
+ 
 ### **資料講解**
 這次的題目屬於分類問題，主要透過不同指標，像是機器的各項參數來評估分析機器可能故障的機率。
-首先解釋一下資料型別所代表的意義
+首先解釋一下資料中各參數所代表的意義
 - **Type**: 由字母 L、M 或 H 組成，代表產品的不同品質變體，分別為低、中、高品質。
 - **Air temperature [K]**: 使用隨機遊走過程生成，然後將其標準化為標準差為 2 K，圍繞著 300 K 的範圍。
 - **Process temperature [K]**: 使用隨機遊走過程生成，然後將其標準化為標準差為 1 K，並加上 10 K，以得到最終的處理溫度。處理溫度是在空氣溫度的基礎上進行計算的。
@@ -16,8 +17,15 @@
 - **Random failures (RNF)**: 每個處理過程有 0.1% 的機會在不考慮其過程參數的情況下失敗。
 
 ### **資料分析與處理**
+
 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。
-初步的資料如下，借用pandas套件更直觀去觀察前幾個欄位數值的情況，發現在TWF,HDF,PWF,OSF,RNF的欄位數值僅有0和1兩種可能，在這五個特徵下的處理不會有閥值設定的問題。而除此之外的其他特徵
+初步的資料如下，使用pandas套件更直觀去觀察前幾個欄位數值的情況，發現在TWF,HDF,PWF,OSF,RNF的欄位數值僅有0和1兩種可能，如下圖所示
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/01dd962a-2d8b-4db5-acdd-147ae035efd1)
+
+
+在這五個特徵下的處理不會有閥值設定的問題。而除此之外的其他特徵
+
 最後machine failure即是我們最終需要評估的重要指標也只有0和1兩種可能，因此最後把資料丟進模型訓練的過程將會是一個二元分類器
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/887e9b97-0e13-497d-a77d-59268900dd99)
@@ -26,13 +34,9 @@
 
 
 
-
-
-
+### **訓練結果**
 對於訓練結果採用ROC(Receiver Operator Characteristic Curve)進行評分，
 
-
-### **訓練結果**
 
 
 
