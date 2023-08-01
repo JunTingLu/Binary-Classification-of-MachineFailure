@@ -18,6 +18,16 @@
 
 ## **資料分析與處理**
 
+接著進行探索性數據分析(EDA)，大致分為以下幾個部分
+- Train, Test and Original data histograms
+- Correlation of Features
+- Scatter plots after dimensionality reduction with PCA by Machine failure
+
+首先從kaggle提供的train以及test資料中繪製密度分布圖，
+
+
+
+
 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。
 初步的資料如下，使用pandas套件更直觀去觀察前幾個欄位數值的情況，發現在TWF,HDF,PWF,OSF,RNF的欄位數值僅有0和1兩種可能，如下圖所示
 
@@ -36,6 +46,12 @@
 
 ## **訓練與結果**
 由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
+
+- PCA analysis
+進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，將資料投影到新的坐標系下，
+
+
+- SHAP Analysis
 
 對於訓練結果採用ROC(Receiver Operator Characteristic Curve)進行評分，
 
