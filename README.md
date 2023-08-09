@@ -52,7 +52,7 @@
 
 
 - SHAP Analysis
-
+若從模型可釋性來分析資料，觀察訓練的結果是否具有一定的邏輯與常理，細節可參考[3]，這裡使用了AI可釋性工具Shap來幫助我們了解模型黑箱子的運作。
 對於訓練結果採用ROC(Receiver Operator Characteristic Curve)進行評分，
 
 
@@ -61,3 +61,4 @@
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
 2. [機器/統計學習:主成分分析(Principal Component Analysis, PCA)](https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71)
+3. 模型可釋性
