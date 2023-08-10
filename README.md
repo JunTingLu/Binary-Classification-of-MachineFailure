@@ -1,4 +1,4 @@
-﻿# Binary-Classification-of-MachineFailure
+﻿# Binary-Classification-of-MachineFailure 
  
 ## **資料講解**
 這次的題目屬於分類問題，主要透過不同指標，像是機器的各項參數來評估分析機器可能故障的機率。
@@ -9,24 +9,24 @@
 - **Rotational speed [rpm]**: 由功率 2860 瓦特計算得出，並添加了一個服從正態分布的噪音。
 - **Torque [Nm]**: 扭矩值服從正態分布，平均值為 40 Nm，標準差為 10 Nm，且不會有負值。
 - **Tool wear [min]**: 不同品質變體 H/M/L 會分別給使用的工具增加 5/3/2 分鐘的工具磨損時間。
-- **Machine failure**: 此數據點中機器是否因任何故障模式而失效。
 - **Tool wear failure (TWF)**: 工具在使用過程中將在隨機選定的工具使用時間點（介於 200 到 240 分鐘之間）失效或需更換。
 - **Heat dissipation failure (HDF)**: 如果空氣溫度與處理溫度之間的差異小於 8.6 K，且旋轉速度低於 1380 rpm，則熱散失導致了一個處理失敗。
 - **Power failure (PWF)**: 扭矩和旋轉速度（以 rad/s 為單位）的乘積等於處理所需的功率。如果此功率低於 3500 瓦特或高於 9000 瓦特，則處理失敗。
 - **Overstrain failure (OSF)**: 如果工具磨損和扭矩的乘積超過 L 品質變體為 11,000 minNm（M 為 12,000，H 為 13,000），則由於過度應變而導致處理失敗。
 - **Random failures (RNF)**: 每個處理過程有 0.1% 的機會在不考慮其過程參數的情況下失敗。
+- **Machine failure**: 此數據點中機器是否因任何故障模式而失效。
+
 
 ## **資料分析與處理**
 
 接著進行探索性數據分析(EDA)，大致分為以下幾個部分
-- Train, Test and Original data histograms
-- Correlation of Features
-- Scatter plots after dimensionality reduction with PCA by Machine failure
-
-首先從kaggle提供的train以及test資料中繪製密度分布圖，
-
+- Train, Test and Original data histograms (特徵分布)
+- Correlation of Features  (特徵關係)
+- Scatter plots after dimensionality reduction with PCA by Machine failure (特徵映射)
+- 特徵解釋性
 
 
+首先從kaggle提供的train以及test資料中，繪製各項參數的分布狀況來看，
 
 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。
 初步的資料如下，使用pandas套件更直觀去觀察前幾個欄位數值的情況，發現在TWF,HDF,PWF,OSF,RNF的欄位數值僅有0和1兩種可能，如下圖所示
@@ -43,12 +43,11 @@
 若將先前Air temperature,Process temperature,Rotational speed,Torque,Tool wear進行統計量計算，
 
 
-
 ## **訓練與結果**
 由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
 
 - PCA analysis
-進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，將資料投影到新的坐標系下，
+進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
 
 
 - SHAP Analysis
