@@ -25,6 +25,12 @@
 - Scatter plots after dimensionality reduction with PCA by Machine failure (特徵映射)
 - 特徵解釋性
 
+1.嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，並使用xgboost訓練，評估loss方式採用ROC，發現已有約90%的精確度，
+2.若加入特徵處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
+
+https://www.kaggle.com/code/manishkumar7432698/pse17-feature-engineering-tuning-optuna
+
+
 
 首先從kaggle提供的train以及test資料中，繪製各項參數的分布狀況來看，
 
