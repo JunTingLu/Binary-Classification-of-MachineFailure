@@ -29,25 +29,8 @@
 - Feature engineering
 - Optimizing the result 
 
-
-1.嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
-2.
-
-
-
-
-5.若加入特徵前處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
-
-https://www.kaggle.com/code/manishkumar7432698/pse17-feature-engineering-tuning-optuna
-
-
-
-首先從kaggle提供的train以及test資料中，繪製各項參數的分布狀況來看，
-
-在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。
-初步的資料如下，使用pandas套件更直觀去觀察前幾個欄位數值的情況，發現在TWF,HDF,PWF,OSF,RNF的欄位數值僅有0和1兩種可能，如下圖所示
-
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/01dd962a-2d8b-4db5-acdd-147ae035efd1)
+**Train, Test data stastics and visualization**
+在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L對於machine failure並無明顯影響，因為分布上幾乎一致，只是數量級上的差別。
 
 
 在這五個特徵下的處理不會有閥值設定的問題。而除此之外的其他特徵
@@ -59,11 +42,23 @@ https://www.kaggle.com/code/manishkumar7432698/pse17-feature-engineering-tuning-
 若將先前Air temperature,Process temperature,Rotational speed,Torque,Tool wear進行統計量計算，
 
 
-## **訓練與結果**
+
+**Correlation of features and histogram plot to decide the importance of features**
+嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
+
+**Dimensionality reduction with PCA by Machine failure**
+進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
+
+
+**Training with different algorithm**
 由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
 
-- PCA analysis (主成分分析)
-進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
+
+
+
+**Feature engineering**
+若加入特徵前處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
+
 
 
 ## **延伸討論**
