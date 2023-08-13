@@ -1,7 +1,7 @@
 ﻿# Binary-Classification-of-MachineFailure 
  
 ## **資料講解**
-這次的題目屬於分類問題，主要透過不同指標，像是機器的各項參數來評估分析機器可能故障的機率。
+>這次的題目屬於分類問題，主要透過不同指標，像是機器的各項參數來評估分析機器可能故障的機率。
 首先解釋一下資料中各參數所代表的意義
 - **Type**: 由字母 L、M 或 H 組成，代表產品的不同品質變體，分別為低、中、高品質。
 - **Air temperature [K]**: 使用隨機遊走過程生成，然後將其標準化為標準差為 2 K，圍繞著 300 K 的範圍。
@@ -29,7 +29,7 @@
 - Feature engineering
 - Optimizing the result 
 
-**1.Train, Test data stastics and visualization**
+**Train, Test data stastics and visualization**
 >在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L對於machine failure並無>明顯影響，因為分布上幾乎一致，只是數量級上的差別。
 
 
@@ -43,7 +43,7 @@
 
 
 
-**2. Correlation of features and histogram plot to decide the importance of features**
+**Correlation of features and histogram plot to decide the importance of features**
 >嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
 
 **Dimensionality reduction with PCA by Machine failure**
@@ -51,13 +51,13 @@
 
 
 4.**Training with different algorithm**
-由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
+>由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
 
 
 
 
 **Feature engineering**
-若加入特徵前處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
+>若加入特徵前處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
 
 
 
