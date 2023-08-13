@@ -19,14 +19,24 @@
 
 ## **資料分析與處理**
 
-接著進行探索性數據分析(EDA)，大致分為以下幾個部分
-- Train, Test and Original data histograms (特徵分布)
-- Correlation of Features  (特徵關係)
-- Scatter plots after dimensionality reduction with PCA by Machine failure (特徵映射)
-- 特徵解釋性
+針對數據分析，大致分為以下幾個部分
+- Train, Test data stastics and visualization
+- Correlation of features and histogram plot to decide the importance of features
+- Dimensionality reduction with PCA by Machine failure 
+- Training with different algorithm (Logistic regression, random forest)
+- ROC curve to estimation
+- Collabration 
+- Feature engineering
+- Optimizing the result 
 
-1.嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，並使用xgboost訓練，評估loss方式採用ROC，發現已有約90%的精確度，
-2.若加入特徵處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
+
+1.嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
+2.
+
+
+
+
+5.若加入特徵前處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
 
 https://www.kaggle.com/code/manishkumar7432698/pse17-feature-engineering-tuning-optuna
 
@@ -52,13 +62,11 @@ https://www.kaggle.com/code/manishkumar7432698/pse17-feature-engineering-tuning-
 ## **訓練與結果**
 由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
 
-- PCA analysis
+- PCA analysis (主成分分析)
 進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
 
 
-- SHAP Analysis
-在優化模型上，若能通過了解不同的feature對於模型的貢獻程度有多少，就能針對性的有效提高模型表現，因此這裡使用了AI可釋性工具Shap來幫助我們了解模型黑箱子的運作，若從模型可釋性來分析資料，觀察訓練的結果是否具有一定的邏輯與常理，細節可參考[3]，
-對於訓練結果採用ROC(Receiver Operator Characteristic Curve)進行評分，
+## **延伸討論**
 
 
 
@@ -66,4 +74,4 @@ https://www.kaggle.com/code/manishkumar7432698/pse17-feature-engineering-tuning-
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
 2. [機器/統計學習:主成分分析(Principal Component Analysis, PCA)](https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71)
-3. [模型可釋性](https://hackmd.io/@explainableai/H1TdF2di8)
+
