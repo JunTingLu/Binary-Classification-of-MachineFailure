@@ -30,7 +30,7 @@
 - Optimizing the result 
 
 **Train, Test data stastics and visualization**
-在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L對於machine failure並無明顯影響，因為分布上幾乎一致，只是數量級上的差別。
+>在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L對於machine failure並無>明顯影響，因為分布上幾乎一致，只是數量級上的差別。
 
 
 在這五個特徵下的處理不會有閥值設定的問題。而除此之外的其他特徵
@@ -44,10 +44,10 @@
 
 
 **Correlation of features and histogram plot to decide the importance of features**
-嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
+>嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
 
 **Dimensionality reduction with PCA by Machine failure**
-進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
+>進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
 
 
 **Training with different algorithm**
