@@ -30,17 +30,9 @@
 - Optimizing the result 
 
 **Train, Test data stastics and visualization**
+1. 欄位[H,M,L]
 >在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L對於machine failure並無>明顯影響，因為分布上幾乎一致，只是數量級上的差別。
-
-
-在這五個特徵下的處理不會有閥值設定的問題。而除此之外的其他特徵
-
-最後machine failure即是我們最終需要評估的重要指標也只有0和1兩種可能，因此最後把資料丟進模型訓練的過程將會是一個二元分類器
-
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/887e9b97-0e13-497d-a77d-59268900dd99)
-
-若將先前Air temperature,Process temperature,Rotational speed,Torque,Tool wear進行統計量計算，
-
+2. [TWF]
 
 
 **Correlation of features and histogram plot to decide the importance of features**
