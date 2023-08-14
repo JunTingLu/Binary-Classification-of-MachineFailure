@@ -29,13 +29,28 @@
 - Optimizing the result 
 
 **Train, Test data stastics and visualization**
-1. 欄位[H,M,L]
->在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L對於machine failure並無>明顯影響，因為分布上幾乎一致，只是數量級上的差別。
-2. [TWF]
-
+- 欄位[H,M,L]和Machine failure關係
+>在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. 等五個特徵下的數量差異，分布上幾乎一致，而這五個特徵又和machine failure無顯著關係，因此可先初步排除"品質"對於預測結果的影響
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/0c9cf81f-c7df-46fb-abb1-8846ef5e9781)
 
 **Correlation of features and histogram plot to decide the importance of features**
+>若進一步Air temp. / Process temp. 等五個特徵和Machine failure 關係，從correlation的圖中，值得注意的是在Toque和Rotation speed 欄位似乎對於解釋Machine failure有一定的重要性。
 >嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/fa4d4aaf-2c4e-4a6e-9098-69730697d77a)
+
+對於TWF/FDF/PWF/OSF/RNF對Machine failure的影響來看，當Machine failure 為"0"時，除了RNF外其他特徵也剛好為"0"，說明了在TWF/HDF/PWF/OSF出現fail時，機器才有可能出現異常，而RNF例外則推測是因為隨機性所導致結果不穩定。
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/d9951196-6d57-4fe1-96e0-53d1814ccd10)
+
+對於品質是否影響Machine failure，從下圖統計的結果來看，確實有發現隨著品質越低，機器異常的可能性越高。
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/d23f773a-4bb4-41c6-b939-d23c4f0e2983)
+
+最後使用混淆矩陣(confusion matrix)來觀察所有特徵間的依賴關係，可發現確實在TWF/HDF/PWF/OSF位其中最具影響機器異常的特徵，另外在Process temp/Air temp.以及Toque/Rotation speed 也具有很高的相關性。
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9ea03f74-536b-495f-835a-fa17e0b134cd)
+
 
 **Dimensionality reduction with PCA by Machine failure**
 >進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
