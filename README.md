@@ -53,26 +53,28 @@
 
 
 **Dimensionality reduction with PCA by Machine failure**
->進一步對資料進行主成分分系(PCA)降維處理，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到資料對應的特徵向量，並投影到此新的坐標系下，
+>接著對所有特徵進行主成分分析(PCA)，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，若以每個特徵對應的特徵向量平方為機率(Probability)，因此進一步計算每一個特徵在整體機率分佈下所占的比例
 
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/a77b7ffb-68f1-4e96-bf5a-9af02715b901)
 
 4.**Training with different algorithm**
->由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，
+>由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察到在準確度(accuracy)高達97%，
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/4733494e-8948-4725-b2ee-06457fdc7e63)
+
+若進一步嘗試優化結果，使用MLP多層感知層、Logistic regreesion 以及隨機森林的免算法進行ROC計算後發現，Logistic模型下有較好的表現，推測是由於特徵本身遵循"機率"分布，因此
 
 
+**結果與討論**
+在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現到有97%準確率，但推測由於TWD/  等四個特徵對於整體的影響程度太大，
 
-
-**Feature engineering**
->若加入特徵前處理，從先前的資料視覺化來看，發現事實上id和資料本身並無太大的關係，但若考慮新的特徵組合，例如
-
-
-
-## **延伸討論**
-
+若考慮家如其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積
+若針對更大量的特徵需要分析時，其實可採用
 
 
 
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
 2. [機器/統計學習:主成分分析(Principal Component Analysis, PCA)](https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71)
+3. [模型信心的本質！：Probability Calibration](https://axk51013.medium.com/%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%BF%83%E7%9A%84%E6%9C%AC%E8%B3%AA-probability-calibration-cbc680a44efa)
 
