@@ -61,9 +61,10 @@
 > 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索<br>
 > 2.使用Logistic Regression方式進行預測<br>
 > 3.使用隨機森林方式進行預測<br>
-> 最終發現到Logist regression 所得到的分數最高，從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，另外隨機森林因為決策閥值
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f1176b74-97bb-4d1b-874e-ac0442861194)
+
+>最終發現到Logist regression 所得到的分數最高，從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，另外隨機森林因為決策閥值
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
