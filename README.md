@@ -31,7 +31,7 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/abd1881e-9d12-46f4-a6d8-47d54e39a3a1)
 
 2.**Correlation of features and histogram plot to decide the importance of features**
-> 若進一步Air temp./ Process tem. /Rotational speed/ Torque/ Tool wear等五個特徵和Machine failure 關係，從相關性(Correlation)的作圖中，值得注意的是在Toque和Rotation speed 欄位似乎對於解釋Machine failure有一定的重要性。另外在TWF。
+> 若進一步Air temp./ Process tem. /Rotational speed/ Torque/ Tool wear等五個特徵和Machine failure 關係，從相關性(Correlation)的作圖中，值得注意的是在Toque和Rotation speed 欄位似乎對於解釋Machine failure有一定的重要性。而其餘像是
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9548d76d-f625-4b3f-9128-ea4f65ad5d78)
 
