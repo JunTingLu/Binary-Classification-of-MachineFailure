@@ -64,7 +64,8 @@
 >
 >在經過ROC曲線計算後，發現準確度(accuracy)高達97%，但將這樣的分類結果以預測機率的方式體現更具準確性，因此以校正曲線(Calibraiton curve)來校正以上結果，最終發現當曲線越接近
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/4733494e-8948-4725-b2ee-06457fdc7e63)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b791c6a8-38ac-44a9-9aed-b1fde9e8259b)
+
 
 
 若進一步嘗試優化其結果，這裡採用了三種方式，如下:
