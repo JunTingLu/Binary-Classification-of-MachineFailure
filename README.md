@@ -57,18 +57,15 @@
 
 
 ### 4. **Training with different algorithm**
->對於使用ROC判斷正確率(Accuracy)，但當資料的"好"跟"壞"比例失衡時，有可能造成模型誤判導致正確率失準，因此這邊會看重真陽性率(TPR)以及真陰性率(TNR)，並且希望兩者越高越好
->另外，由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並採用以下三種演算法訓練:<br>
+>對於使用ROC判斷正確率(Accuracy)，但當資料的"好"跟"壞"比例失衡時，有可能造成模型誤判導致正確率失準，因此這邊會看重真陽性率(TPR)以及真陰性率(TNR)，並且希望兩者越高越好另外，由於kaggle未提供的測試(Valid)資料，故直接> 針對train的資料進行(0.75/0.25)比例切分出測試資料，並採用以下三種演算法訓練:<br>
 > 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索<br>
 > 2.使用Logistic Regression方式進行預測<br>
 > 3.使用隨機森林方式進行預測<br>
-> 最終發現到Logist regression 所得到的分數最高
+> 最終發現到Logist regression 所得到的分數最高，從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，另外隨機森林因為決策閥值
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f1176b74-97bb-4d1b-874e-ac0442861194)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
-
-> 從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
 
