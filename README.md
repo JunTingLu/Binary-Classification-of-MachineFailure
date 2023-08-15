@@ -50,14 +50,16 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/83050ca9-b041-42f6-a3b7-1ee3fae67166)
 
 ### 3. **Dimensionally reduction with PCA by Machine failure**
->接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到能夠切分出這些特徵的平面所構成的向量空間，而這向量空間便是對原先特徵向量化後求解特徵值和特徵向量的過程，最終能得到這所有所有特徵向量組合構成的超維空間，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在最大前兩個pca0和pca1的維度下資料的切分狀況
+>接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到能夠切分出這些特徵的平面所構成的向量空間，而這向量空間便是對原先特徵向量化後求解特徵值和特徵向量的過程，最終能得到這所有所有特徵向量組合構成的超維空間，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在最大前兩個pca0和pca1的維度下資料的切分狀況，確實發現還無法很好的切分Machine failure的"0"和"1"分布，因此後續會進一步利用不同演算法來找到最佳切分的結果
+
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/1358be46-6675-46eb-b6ab-ec9b62077560)
 
 
 ### 4. **Training with different algorithm**
->由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
+>由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知器(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類對於，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
+
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
 ### 5. **ROC curve to estimation and Caliabration** 
