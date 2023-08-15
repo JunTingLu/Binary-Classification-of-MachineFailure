@@ -58,18 +58,18 @@
 
 
 ### 4. **Training with different algorithm**
->由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知器(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類對於，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
+>由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並採用以下三種演算法訓練:<br>
+> 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索<br>
+> 2.使用Logistic Regression方式進行預測<br>
+> 3.使用隨機森林方式進行預測<br>
+> 最終發現到Logist regression 所得到的分數最高
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f1176b74-97bb-4d1b-874e-ac0442861194)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
 ### 5. **ROC curve to estimation and Caliabration** 
-> 以下採用三種演算法訓練:<br>
-> 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索<br>
-> 2.使用Logistic Regression方式進行預測<br>
-> 3.使用隨機森林方式進行預測<br>
 > 在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確。
-
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f1176b74-97bb-4d1b-874e-ac0442861194)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/c0fd791d-390f-44f2-b457-f4fb958c17f7)
 
