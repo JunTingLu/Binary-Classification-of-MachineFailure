@@ -15,7 +15,8 @@
 - **Overstrain failure (OSF)**: 機器運轉過程過度應力變化而導致異常。
 - **Random failures (RNF)**: 隨機下導致機器異常。
 - **Machine failure**: 判定機器故障、失效的狀態。
-而其中的Machine failure便是作為最終判定機器是否異常的指標。
+<br>
+> 而其中的Machine failure便是作為最終判定機器是否異常的指標。
 
 ## **資料分析與處理**
 針對數據分析，大致分為以下幾個部分
