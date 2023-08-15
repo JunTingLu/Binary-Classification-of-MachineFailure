@@ -74,7 +74,7 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
 
 
-**結果與討論**
+## **結果與討論**
 > 在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現正確率有97%，但在可靠度曲線上卻不如MLP的預測結果，個人認為這也或許更真實反映了資料的機率性，另一方面，由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會使得其他特徵無法有效反映在預測結果上。此外，若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(forward sequential feature selection)的方式，依序將不同特徵丟置模型中訓練，分別計算正確率，直到所有特徵都被挑選過，留下正確率最高的特徵組合拿去訓練。
 
 ## **參考資料**
