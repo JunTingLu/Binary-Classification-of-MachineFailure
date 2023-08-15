@@ -58,8 +58,8 @@
 
 
 ### 4. **Training with different algorithm**
->對於使用ROC判斷正確率(Accuracy)，但當資料的"好"跟"壞"比例失衡時，有可能造成模型誤判導致正確率失準，因此這邊會看重真陽性率(TPR)以及真陰性率(TNR)
->由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並採用以下三種演算法訓練:<br>
+>對於使用ROC判斷正確率(Accuracy)，但當資料的"好"跟"壞"比例失衡時，有可能造成模型誤判導致正確率失準，因此這邊會看重真陽性率(TPR)以及真陰性率(TNR)，並且希望兩者越高越好
+>另外，由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並採用以下三種演算法訓練:<br>
 > 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索<br>
 > 2.使用Logistic Regression方式進行預測<br>
 > 3.使用隨機森林方式進行預測<br>
@@ -69,19 +69,19 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
-> 從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP多層感知層以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，此代表可能出現
+> 從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，此代表可能出現
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
 
 
 ### 5. **ROC curve to estimation and Caliabration** 
-> 在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確。
+> 在經過ROC曲線計算後，發現正確率(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/c0fd791d-390f-44f2-b457-f4fb958c17f7)
 
 
 **結果與討論**
-> 在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會使得其他特徵無法有效反映在預測結果上。此外，若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過每次結果的均值作為標準。
+> 在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現正確率有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會使得其他特徵無法有效反映在預測結果上。此外，若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過每次結果的均值作為標準。
 
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
