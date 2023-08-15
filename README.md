@@ -68,7 +68,7 @@
 **Optimizing the result** 
 若進一步嘗試優化其結果，這裡採用了三種方式，如下:
 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索
-2.使用Logistic regression方式進行預測
+2.使用Logistic Regression方式進行預測
 3.使用隨機森林方式進行預測
 藉由以上三種方式並透過Calibration curve衡量後，發現原來表現較好的Logistic regression模型的分數稍無降低了，
 
@@ -78,15 +78,12 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/412803c0-3ffc-46d0-af43-975877e1d4f8)
 
-
 **結果與討論**
->在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會因為其他特徵
-
-若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過每次結果的均值作為標準。
+>在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會使得其他特徵無法有效反映在預測結果上。此外，若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過每次結果的均值作為標準。
 
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
 2. [機器/統計學習:主成分分析(Principal Component Analysis, PCA)](https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71)
 3. [模型信心的本質！：Probability Calibration](https://axk51013.medium.com/%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%BF%83%E7%9A%84%E6%9C%AC%E8%B3%AA-probability-calibration-cbc680a44efa)
-4. 
+
 
