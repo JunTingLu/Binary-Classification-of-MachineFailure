@@ -64,9 +64,9 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f1176b74-97bb-4d1b-874e-ac0442861194)
 
->最終發現到Logist regression 所得到的分數最高，從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，另外隨機森林因為決策閥值
-
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
+
+>最終發現到Logist regression 所得到的分數最高，從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，另外隨機森林因為決策閥值
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
 
