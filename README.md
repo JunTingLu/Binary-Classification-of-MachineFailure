@@ -19,12 +19,11 @@
 
 ## **資料分析與處理**
 針對數據分析，大致分為以下幾個部分
-- Train, Test data stastics and visualization
-- Correlation of features and histogram plot to decide the importance of features
-- Dimensionality reduction with PCA by Machine failure 
-- Training with different algorithm (Logistic regression, random forest)
-- ROC curve to estimation and Caliabration 
-- Optimizing the result 
+- **Train, Test data stastics and visualization**
+- **Correlation of features and histogram plot to decide the importance of features**
+- **Dimensionality reduction with PCA by Machine failure** 
+- **Training with different algorithm (Logistic regression, random forest)**
+- **ROC curve to estimation and Caliabration** 
 
 **Train, Test data stastics and visualization**
 - 欄位[H,M,L]和Machine failure關係
