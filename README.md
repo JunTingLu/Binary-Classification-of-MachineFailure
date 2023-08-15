@@ -66,7 +66,7 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
->最終發現到Logist regression 所得到的分數最高，若進一步以可靠性曲線(Reliability curve)[3]，最完美的情況是要越接近對角線越好，的直方圖來觀察整體的機率分布，發現由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，但即使在真實的情況也應該存在一定的機率分布，因此另外隨機森林因為決策閥值
+>最終發現到Logist regression 所得到的分數最高，若進一步以可靠性曲線(Reliability curve)[3]，最完美的情況是要越接近對角線越好，的直方圖來觀察整體的機率分布，發現由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，代表MLP確實能將資料切分得很好，而Logistic模型在考慮了機率分佈所帶來的影響，因而體現在可靠性曲線上。另外隨機森林隨著決策閥值的變動出現些微誤判的現象，導致靠近左端地附近存在Machine failure "0"和"1"穿插的狀況。
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/4ae9c4ab-5c06-464b-804b-12ffc999e887)
 
@@ -75,7 +75,7 @@
 
 
 **結果與討論**
-> 在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現正確率有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會使得其他特徵無法有效反映在預測結果上。此外，若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(forward sequential feature selection)的方式，依序將不同特徵丟置模型中訓練，分別計算正確率，直到所有特徵都被挑選過，留下正確率最高的特徵組合拿去訓練。
+> 在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現正確率有97%，但在可靠度曲線上卻不如MLP的預測結果，個人認為這也或許更真實反映了資料的機率性，另一方面，由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會使得其他特徵無法有效反映在預測結果上。此外，若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(forward sequential feature selection)的方式，依序將不同特徵丟置模型中訓練，分別計算正確率，直到所有特徵都被挑選過，留下正確率最高的特徵組合拿去訓練。
 
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
