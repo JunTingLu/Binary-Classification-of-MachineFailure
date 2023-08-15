@@ -23,9 +23,7 @@
 - Correlation of features and histogram plot to decide the importance of features
 - Dimensionality reduction with PCA by Machine failure 
 - Training with different algorithm (Logistic regression, random forest)
-- ROC curve to estimation
-- Collabration 
-- Feature engineering
+- ROC curve to estimation and Caliabration 
 - Optimizing the result 
 
 **Train, Test data stastics and visualization**
@@ -34,12 +32,12 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/0c9cf81f-c7df-46fb-abb1-8846ef5e9781)
 
 **Correlation of features and histogram plot to decide the importance of features**
->若進一步Air temp. / Process temp. 等五個特徵和Machine failure 關係，從correlation的圖中，值得注意的是在Toque和Rotation speed 欄位似乎對於解釋Machine failure有一定的重要性。
+>若進一步Air temp. / Process temp. 等五個特徵和Machine failure 關係，從相關性(Correlation)的作圖中，值得注意的是在Toque和Rotation speed 欄位似乎對於解釋Machine failure有一定的重要性。
 >嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/fa4d4aaf-2c4e-4a6e-9098-69730697d77a)
 
-對於TWF/FDF/PWF/OSF/RNF對Machine failure的影響來看，當Machine failure 為"0"時，除了RNF外其他特徵也剛好為"0"，說明了在TWF/HDF/PWF/OSF出現fail時，機器才有可能出現異常，而RNF例外則推測是因為隨機性所導致結果不穩定。
+對於TWF/HDF/PWF/OSF/RNF對Machine failure的影響來看，當Machine failure 為"0"時，除了RNF外其他特徵也剛好為"0"，說明了在TWF/HDF/PWF/OSF出現fail時，機器才有可能出現異常，而RNF例外則推測是因為隨機性所導致結果不穩定。
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/d9951196-6d57-4fe1-96e0-53d1814ccd10)
 
@@ -57,15 +55,17 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/a77b7ffb-68f1-4e96-bf5a-9af02715b901)
 
-4.**Training with different algorithm**
+**Training with different algorithm**
 >由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
 >
 >![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/8ca6ae5a-061e-45a6-93d0-2a639c9178cb)
->
+
+**ROC curve to estimation and Caliabration** 
 >在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，但若想進一步衡量此結果是否準確，可藉由繪製校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b791c6a8-38ac-44a9-9aed-b1fde9e8259b)
 
+**Optimizing the result** 
 若進一步嘗試優化其結果，這裡採用了三種方式，如下:
 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索
 2.使用Logistic regression方式進行預測
@@ -79,12 +79,10 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/412803c0-3ffc-46d0-af43-975877e1d4f8)
 
 
-
 **結果與討論**
->在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上
+>在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會因為其他特徵
 
-若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過
-
+若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過每次結果的均值作為標準。
 
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
