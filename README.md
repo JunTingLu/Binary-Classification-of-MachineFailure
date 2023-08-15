@@ -25,12 +25,12 @@
 - **Training with different algorithm (Logistic regression, random forest)**
 - **ROC curve to estimation and Caliabration** 
 
-**Train, Test data stastics and visualization**
+1.**Train, Test data stastics and visualization**
 - 欄位[H,M,L]和Machine failure關係
 > 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於我們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. 等五個特徵下的數量差異，分布上幾乎一致，而這五個特徵又和machine failure無顯著關係，因此可先初步排除"品質"對於預測結果的影響
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/abd1881e-9d12-46f4-a6d8-47d54e39a3a1)
 
-**Correlation of features and histogram plot to decide the importance of features**
+2.**Correlation of features and histogram plot to decide the importance of features**
 > 若進一步Air temp. / Process temp. 等五個特徵和Machine failure 關係，從相關性(Correlation)的作圖中，值得注意的是在Toque和Rotation speed 欄位似乎對於解釋Machine failure有一定的重要性。
 > 嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵。
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9548d76d-f625-4b3f-9128-ea4f65ad5d78)
@@ -49,18 +49,18 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/83050ca9-b041-42f6-a3b7-1ee3fae67166)
 
-**Dimensionality reduction with PCA by Machine failure**
+3.**Dimensionality reduction with PCA by Machine failure**
 >接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，透過基於所以特徵下所構成的所有特徵向量組合，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在pca0和pca1的維度下資料的切分狀況
 >![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/1358be46-6675-46eb-b6ab-ec9b62077560)
 
 
-**Training with different algorithm**
+4.**Training with different algorithm**
 >由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
-**ROC curve to estimation and Caliabration** 
+5.**ROC curve to estimation and Caliabration** 
 > 以下採用三種演算法訓練:
 > 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索
 > 2.使用Logistic Regression方式進行預測
