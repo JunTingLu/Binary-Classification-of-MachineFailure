@@ -15,7 +15,7 @@
 - **Overstrain failure (OSF)**: 機器運轉過程過度應力變化而導致異常。
 - **Random failures (RNF)**: 隨機下導致機器異常。
 - **Machine failure**: 判定機器故障、失效的狀態。
-
+而其中的Machine failure便是作為最終判定機器是否異常的指標。
 
 ## **資料分析與處理**
 針對數據分析，大致分為以下幾個部分
@@ -25,7 +25,7 @@
 - **Training with different algorithm (Logistic regression, random forest)**
 - **ROC curve to estimation and Caliabration** 
 ### 1. **Train, Test data stastics and visualization**
-> 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於我們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. /Rotational speed/ Torque/ Tool wear等五個特徵下的數量差異，分布上幾乎一致，而這五個特徵又和machine failure無顯著關係，因此可先初步排除"品質"對於預測結果的影響可能不顯著。
+> 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於我們最關心的是最後的Machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. /Rotational speed/ Torque/ Tool wear等五個特徵下的數量差異，分布上幾乎一致，而這五個特徵又和machine failure無顯著關係，因此可先初步排除"品質"對於預測結果的影響可能不顯著。
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/abd1881e-9d12-46f4-a6d8-47d54e39a3a1)
 
 2.**Correlation of features and histogram plot to decide the importance of features**
