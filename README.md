@@ -67,7 +67,7 @@
 **ROC curve to estimation and Caliabration** 
 >在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，但若想進一步衡量此結果是否準確，可藉由繪製校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b791c6a8-38ac-44a9-9aed-b1fde9e8259b)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b67572b1-289a-4664-a589-d6100a077bf3)
 
 **Optimizing the result** 
 若進一步嘗試優化其結果，這裡採用了三種方式，如下:
@@ -78,9 +78,10 @@
 
 使用MLP多層感知層、Logistic regreesion 以及隨機森林的免算法進行ROC計算後發現，都有很好的準確度，從預測出來的機率直方圖來看，發現預測的機率都會極端分布在0和1，此代表可能出現
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/e9d5ddea-f8c3-41d1-9dcc-af4c68635b5d)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/50e217d0-24cf-448b-a3f7-6b825fc11944)
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/412803c0-3ffc-46d0-af43-975877e1d4f8)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b3b60be0-4149-410d-8b13-563d1b9dcb01)
+
 
 **結果與討論**
 > 在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上會使得其他特徵無法有效反映在預測結果上。此外，若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過每次結果的均值作為標準。
