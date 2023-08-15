@@ -50,7 +50,7 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/83050ca9-b041-42f6-a3b7-1ee3fae67166)
 
 ### 3. **Dimensionally reduction with PCA by Machine failure**
->接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，透過基於所以特徵下所構成的所有特徵向量組合，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在pca0和pca1的維度下資料的切分狀況
+>接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到能夠切分出這些特徵的平面所構成的向量空間，而這向量空間便是對原先特徵向量化後求解特徵值和特徵向量的過程，最終能得到這所有所有特徵向量組合構成的超維空間，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在最大前兩個pca0和pca1的維度下資料的切分狀況
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/1358be46-6675-46eb-b6ab-ec9b62077560)
