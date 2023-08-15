@@ -66,7 +66,7 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
->最終發現到Logist regression 所得到的分數最高，若進一步以可靠性曲線(Reliability curve)的直方圖來觀察整體的機率分布，發現由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，但即使在真實的情況也應該存在一定的機率分布， 另外隨機森林因為決策閥值
+>最終發現到Logist regression 所得到的分數最高，若進一步以可靠性曲線(Reliability curve)[3]，最完美的情況是要越接近對角線越好，的直方圖來觀察整體的機率分布，發現由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，但即使在真實的情況也應該存在一定的機率分布，因此另外隨機森林因為決策閥值
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/4ae9c4ab-5c06-464b-804b-12ffc999e887)
 
