@@ -1,23 +1,23 @@
 ﻿# Binary-Classification-of-MachineFailure 
- 
+主要運用kaggle提供的機器對應的各項參數，進行一些對於機器失效分析的處理及預測
+
 ## **資料講解**
 >這次的題目屬於二元分類問題，最終目的是預測機器運作中異常的機率，針對Kaggle提供的資料集，首先解釋一下資料中各參數所代表的大致意義
 - **Type**: 由字母 L、M 或 H 組成，代表產品的不同品質，分別為低、中、高品質。
-- **Air temperature [K]**: 使用隨機遊走過程生成，然後將其標準化為標準差為 2 K，圍繞著 300 K 的範圍。
-- **Process temperature [K]**: 使用隨機遊走過程生成，然後將其標準化為標準差為 1 K，並加上 10 K，以得到最終的處理溫度。處理溫度是在空氣溫度的基礎上進行計算的。
-- **Rotational speed [rpm]**: 由功率 2860 瓦特計算得出，並添加了一個服從正態分布的噪音。
-- **Torque [Nm]**: 扭矩值服從正態分布，平均值為 40 Nm，標準差為 10 Nm，且不會有負值。
-- **Tool wear [min]**: 不同品質變體 H/M/L 會分別給使用的工具增加 5/3/2 分鐘的工具磨損時間。
-- **Tool wear failure (TWF)**: 工具在使用過程中將在隨機選定的工具使用時間點（介於 200 到 240 分鐘之間）失效或需更換。
-- **Heat dissipation failure (HDF)**: 如果空氣溫度與處理溫度之間的差異小於 8.6 K，且旋轉速度低於 1380 rpm，則熱散失導致了一個處理失敗。
-- **Power failure (PWF)**: 扭矩和旋轉速度（以 rad/s 為單位）的乘積等於處理所需的功率。如果此功率低於 3500 瓦特或高於 9000 瓦特，則處理失敗。
-- **Overstrain failure (OSF)**: 如果工具磨損和扭矩的乘積超過 L 品質變體為 11,000 minNm（M 為 12,000，H 為 13,000），則由於過度應變而導致處理失敗。
-- **Random failures (RNF)**: 每個處理過程有 0.1% 的機會在不考慮其過程參數的情況下失敗。
-- **Machine failure**: 此數據點中機器是否因任何故障模式而失效。
+- **Air temperature [K]**: 空氣溫度。
+- **Process temperature [K]**: 機器運昨時的溫度。
+- **Rotational speed [rpm]**: 機器旋轉速率。
+- **Torque [Nm]**: 機器旋轉力矩。
+- **Tool wear [min]**: 機器磨損時間。
+- **Tool wear failure (TWF)**: 機器磨損失效或需更換的狀態。
+- **Heat dissipation failure (HDF)**: 機器熱散失導致異常。
+- **Power failure (PWF)**: 機器運轉的功率過低或過高導致異常的狀態。
+- **Overstrain failure (OSF)**: 機器運轉過程過度應力變化而導致異常。
+- **Random failures (RNF)**: 隨機下導致機器異常。
+- **Machine failure**: 判定機器故障、失效的狀態。
 
 
 ## **資料分析與處理**
-
 針對數據分析，大致分為以下幾個部分
 - Train, Test data stastics and visualization
 - Correlation of features and histogram plot to decide the importance of features
