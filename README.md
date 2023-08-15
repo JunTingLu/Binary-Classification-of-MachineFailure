@@ -68,7 +68,10 @@
 > 3.使用隨機森林方式進行預測
 > 在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確。
 
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f1176b74-97bb-4d1b-874e-ac0442861194)
+
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/c0fd791d-390f-44f2-b457-f4fb958c17f7)
+
 > 從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP多層感知層以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，此代表可能出現
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
 
