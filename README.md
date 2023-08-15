@@ -29,31 +29,35 @@
 **Train, Test data stastics and visualization**
 - 欄位[H,M,L]和Machine failure關係
 >在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於委們最關心的是>最後的machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. 等五個特徵下的數量差異，分布上幾乎一致，而這五個特徵又和machine failure無顯著關係，因此可先初步排除"品質"對於預測結果的影響
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/0c9cf81f-c7df-46fb-abb1-8846ef5e9781)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/08eb3135-18a6-4b25-8217-e522c21978f0)
+
 
 **Correlation of features and histogram plot to decide the importance of features**
 >若進一步Air temp. / Process temp. 等五個特徵和Machine failure 關係，從相關性(Correlation)的作圖中，值得注意的是在Toque和Rotation speed 欄位似乎對於解釋Machine failure有一定的重要性。
->嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵，
+>嘗試先在未做任何資料處理的情況下從correlation來篩選出較為重要的特徵。
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/fa4d4aaf-2c4e-4a6e-9098-69730697d77a)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9cb87f96-7454-4fb6-9ebf-91888dc3b019)
 
 對於TWF/HDF/PWF/OSF/RNF對Machine failure的影響來看，當Machine failure 為"0"時，除了RNF外其他特徵也剛好為"0"，說明了在TWF/HDF/PWF/OSF出現fail時，機器才有可能出現異常，而RNF例外則推測是因為隨機性所導致結果不穩定。
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/d9951196-6d57-4fe1-96e0-53d1814ccd10)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/a04741ce-d8d6-4735-9aaa-06b353211806)
+
 
 對於品質是否影響Machine failure，從下圖統計的結果來看，確實有發現隨著品質越低，機器異常的可能性越高。
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/d23f773a-4bb4-41c6-b939-d23c4f0e2983)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/489f4950-4b48-4d45-87a9-b52eaf23ec71)
+
 
 最後使用混淆矩陣(Confusion matrix)來觀察所有特徵間的依賴關係，可發現確實在TWF/HDF/PWF/OSF位其中最具影響機器異常的特徵，另外在Process temp/Air temp.以及Toque/Rotation speed 也具有很高的相關性。
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9ea03f74-536b-495f-835a-fa17e0b134cd)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/2e12ad2d-2b34-4602-8dde-8a3d8dd4c110)
 
 
 **Dimensionality reduction with PCA by Machine failure**
 >接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，若以每個特徵對應的特徵向量平方為機率(Probability)，因此進一步計算每一個特徵在整體機率分佈下所占的比例
 
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/a77b7ffb-68f1-4e96-bf5a-9af02715b901)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/fb4b9316-28ef-4883-88fd-8a231ee8ae0f)
+
 
 **Training with different algorithm**
 >由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
