@@ -20,9 +20,10 @@
 針對數據分析，大致分為以下幾個部分
 - **Train, Test data stastics and visualization**
 - **Correlation of features and histogram plot to decide the importance of features**
-- **Dimensionality reduction with PCA by Machine failure** 
+- **Dimensionally reduction with PCA by Machine failure** 
 - **Training with different algorithm (Logistic regression, random forest)**
-- **ROC curve to estimation and Caliabration** 
+- **ROC curve to estimation and Caliabration**
+  
 ### 1. **Train, Test data stastics and visualization**
 > 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於我們最關心的是最後的Machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. /Rotational speed/ Torque/ Tool wear等五個特徵下的數量差異，分布上幾乎一致，而從這五個特徵目前還看不出和Machine failure顯著的關係，而"品質"在各特徵中分布是相當一致的
 
@@ -48,7 +49,7 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/83050ca9-b041-42f6-a3b7-1ee3fae67166)
 
-### 3. **Dimensionality reduction with PCA by Machine failure**
+### 3. **Dimensionally reduction with PCA by Machine failure**
 >接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，透過基於所以特徵下所構成的所有特徵向量組合，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在pca0和pca1的維度下資料的切分狀況
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
 
