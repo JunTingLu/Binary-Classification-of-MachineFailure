@@ -25,7 +25,7 @@
 - **ROC curve to estimation and Caliabration** 
 ### 1. **Train, Test data stastics and visualization**
 > 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於我們最關心的是最後的Machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. /Rotational speed/ Torque/ Tool wear等五個特徵下的數量差異，分布上幾乎一致，而從這五個特症目前看不出和Machine failure顯著的關係，因此可先初步排除"品質"對於預測結果的影響可能不顯著。
-> ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/32885aab-81a4-4a48-85ed-0d9ce5f8c72f)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/32885aab-81a4-4a48-85ed-0d9ce5f8c72f)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/abd1881e-9d12-46f4-a6d8-47d54e39a3a1)
 
@@ -35,22 +35,22 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9548d76d-f625-4b3f-9128-ea4f65ad5d78)
 
 
-對於TWF/HDF/PWF/OSF/RNF對Machine failure的影響來看，當Machine failure 為"0"時，除了RNF外其他特徵也剛好為"0"，說明了在TWF/HDF/PWF/OSF出現fail時，機器才有可能出現異常，而RNF例外則推測是因為隨機性所導致結果不穩定。
+>對於TWF/HDF/PWF/OSF/RNF對Machine failure的影響來看，當Machine failure 為"0"時，除了RNF外其他特徵也剛好為"0"，說明了在TWF/HDF/PWF/OSF出現fail時，機器才有可能出現異常，而RNF例外則推測是因為隨機性所導致結果不穩定。
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/84d373a8-6f83-4617-ab49-af4fbbad510f)
 
-對於品質是否影響Machine failure，從下圖統計的結果來看，確實有發現隨著品質越低，機器異常的可能性越高。
+>對於品質是否影響Machine failure，從下圖統計的結果來看，確實有發現隨著品質越低，機器異常的可能性越高。
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b5a0d1a3-7110-45d0-a168-1cfd9d21e704)
 
 
-最後使用混淆矩陣(Confusion matrix)來觀察所有特徵間的依賴關係，可發現確實在TWF/HDF/PWF/OSF位其中最具影響機器異常的特徵，另外在Process temp/Air temp.以及Toque/Rotation speed 也具有很高的相關性。
+>最後使用混淆矩陣(Confusion matrix)來觀察所有特徵間的依賴關係，可發現確實在TWF/HDF/PWF/OSF位其中最具影響機器異常的特徵，另外在Process temp/Air temp.以及Toque/Rotation speed 也具有很高的相關性。
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/83050ca9-b041-42f6-a3b7-1ee3fae67166)
 
 3.**Dimensionality reduction with PCA by Machine failure**
 >接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，透過基於所以特徵下所構成的所有特徵向量組合，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在pca0和pca1的維度下資料的切分狀況
->![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/1358be46-6675-46eb-b6ab-ec9b62077560)
 
