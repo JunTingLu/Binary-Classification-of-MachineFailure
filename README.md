@@ -58,17 +58,29 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/a77b7ffb-68f1-4e96-bf5a-9af02715b901)
 
 4.**Training with different algorithm**
->由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察到在準確度(accuracy)高達97%，
+>由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
+>
+>![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/8ca6ae5a-061e-45a6-93d0-2a639c9178cb)
+>
+>在經過ROC曲線計算後，發現準確度(accuracy)高達97%，但將這樣的分類結果以預測機率的方式體現更具準確性，因此以校正曲線(Calibraiton curve)來校正以上結果，最終發現當曲線越接近
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/4733494e-8948-4725-b2ee-06457fdc7e63)
 
-若進一步嘗試優化結果，使用MLP多層感知層、Logistic regreesion 以及隨機森林的免算法進行ROC計算後發現，Logistic模型下有較好的表現，推測是由於特徵本身遵循"機率"分布，因此
+
+若進一步嘗試優化其結果，這裡採用了三種方式，如下:
+1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索
+2.使用Logistic regression方式進行預測
+3.使用隨機森林方式進行預測
+藉由以上三種方式並透過Calibration curve衡量，發現原來表現較好的Logistic regression模型的分數稍無降低了，
+
+使用MLP多層感知層、Logistic regreesion 以及隨機森林的免算法進行ROC計算後發現，Logistic模型下有較好的表現，推測是由於特徵本身遵循"機率"分布，因此
+
 
 
 **結果與討論**
-在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現到有97%準確率，但推測由於TWD/  等四個特徵對於整體的影響程度太大，
+在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此
 
-若考慮家如其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積
+若考慮家如其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵，
 若針對更大量的特徵需要分析時，其實可採用
 
 
@@ -77,4 +89,5 @@
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
 2. [機器/統計學習:主成分分析(Principal Component Analysis, PCA)](https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71)
 3. [模型信心的本質！：Probability Calibration](https://axk51013.medium.com/%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%BF%83%E7%9A%84%E6%9C%AC%E8%B3%AA-probability-calibration-cbc680a44efa)
+4. 
 
