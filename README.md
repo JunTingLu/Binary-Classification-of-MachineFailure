@@ -52,17 +52,20 @@
 
 **Dimensionality reduction with PCA by Machine failure**
 >接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，若以每個特徵對應的特徵向量平方為機率(Probability)，因此進一步計算每一個特徵在整體機率分佈下所占的比例
-
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/fb4b9316-28ef-4883-88fd-8a231ee8ae0f)
+>![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
 
 
 **Training with different algorithm**
 >由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/8ca6ae5a-061e-45a6-93d0-2a639c9178cb)
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
 **ROC curve to estimation and Caliabration** 
->在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，但若想進一步衡量此結果是否準確，可藉由繪製校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b67572b1-289a-4664-a589-d6100a077bf3)
+>在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/c0fd791d-390f-44f2-b457-f4fb958c17f7)
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
+
 
 **Optimizing the result** 
 若進一步嘗試優化其結果，這裡採用了三種方式，如下:
