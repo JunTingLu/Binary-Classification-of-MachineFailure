@@ -58,7 +58,7 @@
 
 
 ### 4. **Training with different algorithm**
->對於使用ROC判斷正確率(Accuracy)
+>對於使用ROC判斷正確率(Accuracy)，但當資料的"好"跟"壞"比例失衡時，有可能造成模型誤判導致正確率失準，因此這邊會看重真陽性率(TPR)以及真陰性率(TNR)
 >由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並採用以下三種演算法訓練:<br>
 > 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索<br>
 > 2.使用Logistic Regression方式進行預測<br>
