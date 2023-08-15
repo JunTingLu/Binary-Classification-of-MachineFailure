@@ -58,6 +58,7 @@
 
 
 ### 4. **Training with different algorithm**
+>對於使用ROC判斷正確率(Accuracy)
 >由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並採用以下三種演算法訓練:<br>
 > 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索<br>
 > 2.使用Logistic Regression方式進行預測<br>
