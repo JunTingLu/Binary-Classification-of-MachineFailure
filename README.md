@@ -47,43 +47,43 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/d23f773a-4bb4-41c6-b939-d23c4f0e2983)
 
-最後使用混淆矩陣(confusion matrix)來觀察所有特徵間的依賴關係，可發現確實在TWF/HDF/PWF/OSF位其中最具影響機器異常的特徵，另外在Process temp/Air temp.以及Toque/Rotation speed 也具有很高的相關性。
+最後使用混淆矩陣(Confusion matrix)來觀察所有特徵間的依賴關係，可發現確實在TWF/HDF/PWF/OSF位其中最具影響機器異常的特徵，另外在Process temp/Air temp.以及Toque/Rotation speed 也具有很高的相關性。
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9ea03f74-536b-495f-835a-fa17e0b134cd)
 
 
 **Dimensionality reduction with PCA by Machine failure**
->接著對所有特徵進行主成分分析(PCA)，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，若以每個特徵對應的特徵向量平方為機率(Probability)，因此進一步計算每一個特徵在整體機率分佈下所占的比例
+>接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，若以每個特徵對應的特徵向量平方為機率(Probability)，因此進一步計算每一個特徵在整體機率分佈下所占的比例
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/a77b7ffb-68f1-4e96-bf5a-9af02715b901)
 
 4.**Training with different algorithm**
->由於kaggle未提供的測試(valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
+>由於kaggle未提供的測試(Valid)資料，故直接針對train的資料進行(0.75/0.25)比例切分出測試資料，並透過多層感知層(MLP)訓練後，利用ROC曲線觀察在TF和TP兩類，其中TF指的是樣本無異常卻被檢測為異常；TP則為樣本無異常被檢測為無異常，這兩類的比例將影響準確度(Accuracy)的計算，如下
 >
 >![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/8ca6ae5a-061e-45a6-93d0-2a639c9178cb)
 >
->在經過ROC曲線計算後，發現準確度(accuracy)高達97%，但將這樣的分類結果以預測機率的方式體現更具準確性，因此以校正曲線(Calibraiton curve)來校正以上結果，最終發現當曲線越接近
+>在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，但若想進一步衡量此結果是否準確，可藉由繪製校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b791c6a8-38ac-44a9-9aed-b1fde9e8259b)
-
-
 
 若進一步嘗試優化其結果，這裡採用了三種方式，如下:
 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索
 2.使用Logistic regression方式進行預測
 3.使用隨機森林方式進行預測
-藉由以上三種方式並透過Calibration curve衡量，發現原來表現較好的Logistic regression模型的分數稍無降低了，
+藉由以上三種方式並透過Calibration curve衡量後，發現原來表現較好的Logistic regression模型的分數稍無降低了，
 
-使用MLP多層感知層、Logistic regreesion 以及隨機森林的免算法進行ROC計算後發現，Logistic模型下有較好的表現，推測是由於特徵本身遵循"機率"分布，因此
+使用MLP多層感知層、Logistic regreesion 以及隨機森林的免算法進行ROC計算後發現，都有很好的準確度，從預測出來的機率直方圖來看，發現預測的機率都會極端分布在0和1，此代表可能出現
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/e9d5ddea-f8c3-41d1-9dcc-af4c68635b5d)
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/412803c0-3ffc-46d0-af43-975877e1d4f8)
 
 
 
 **結果與討論**
->在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此
+>在假設沒有任何Domain knowladge下，我們考慮所有特徵，進行PCA分析後，藉由Logistic regression 演算法進行訓練，可發現準確度有97%，但推測由於TWF/FDF/PWF/OSF等四個特徵對於整體的影響程度太大，從最一開始的confusion matrix就能夠得知，因此對於分析上
 
-若考慮家如其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵，
-若針對更大量的特徵需要分析時，其實可採用
-
+若考慮其他可用的特徵訓練，或許能更加提升模型預測能力，像是Rotation speed 和 Toque的乘積亦能作為新的特徵欄位，增加模型準確度，另外也可採用前向特徵篩選(Feature slelction)的方式，依序將不同特徵丟置模型中訓練，只要過程中低於閥值參數，就被視為不重要的特徵而進一步替除掉，而閥值通常可透過
 
 
 ## **參考資料**
