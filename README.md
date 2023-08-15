@@ -66,7 +66,10 @@
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
->最終發現到Logist regression 所得到的分數最高，從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，另外隨機森林因為決策閥值
+>最終發現到Logist regression 所得到的分數最高，若進一步以可靠性曲線(Reliability curve)的直方圖來觀察整體的機率分布，發現由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表MLP確實能將資料分得很好，但即使在真實的情況也應該存在一定的機率分布， 另外隨機森林因為決策閥值
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/4ae9c4ab-5c06-464b-804b-12ffc999e887)
+
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
 
@@ -77,6 +80,6 @@
 ## **參考資料**
 1. [分類器評估方法 — ROC曲線、AUC、Accuracy、PR曲線](https://medium.com/marketingdatascience/%E5%88%86%E9%A1%9E%E5%99%A8%E8%A9%95%E4%BC%B0%E6%96%B9%E6%B3%95-roc%E6%9B%B2%E7%B7%9A-auc-accuracy-pr%E6%9B%B2%E7%B7%9A-d3a39977022c)
 2. [機器/統計學習:主成分分析(Principal Component Analysis, PCA)](https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71)
-3. [模型信心的本質！：Probability Calibration](https://axk51013.medium.com/%E6%A8%A1%E5%9E%8B%E4%BF%A1%E5%BF%83%E7%9A%84%E6%9C%AC%E8%B3%AA-probability-calibration-cbc680a44efa)
+3.[［機器學習落地系列］你的預測夠「準」嗎？如何校準模型預測機率]([https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E7%B5%B1%E8%A8%88%E5%AD%B8%E7%BF%92-%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90-principle-component-analysis-pca-58229cd26e71](https://medium.com/@pclu79/%E6%A8%A1%E5%9E%8B%E8%BC%B8%E5%87%BA%E7%9A%84%E9%A0%90%E6%B8%AC%E6%A9%9F%E7%8E%87%E5%8F%AF%E9%9D%A0%E5%97%8E-%E5%A6%82%E4%BD%95%E6%A0%A1%E6%BA%96%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%A0%90%E6%B8%AC%E6%A9%9F%E7%8E%87-%E6%A6%82%E5%BF%B5%E7%AF%87-ca3d40b15bdd)https://medium.com/@pclu79/%E6%A8%A1%E5%9E%8B%E8%BC%B8%E5%87%BA%E7%9A%84%E9%A0%90%E6%B8%AC%E6%A9%9F%E7%8E%87%E5%8F%AF%E9%9D%A0%E5%97%8E-%E5%A6%82%E4%BD%95%E6%A0%A1%E6%BA%96%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%A0%90%E6%B8%AC%E6%A9%9F%E7%8E%87-%E6%A6%82%E5%BF%B5%E7%AF%87-ca3d40b15bdd)
 
 
