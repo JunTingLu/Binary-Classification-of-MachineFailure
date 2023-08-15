@@ -51,8 +51,10 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/83050ca9-b041-42f6-a3b7-1ee3fae67166)
 
 **Dimensionality reduction with PCA by Machine failure**
->接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，若以每個特徵對應的特徵向量平方為機率(Probability)，因此進一步計算每一個特徵在整體機率分佈下所占的比例
+>接著對所有特徵進行主成分分析(PCA)[2]，簡單來說我們想利用降維的方式在盡可能不失資料本身特性下，找到每個特徵對應的特徵向量，並投影到此新的坐標系下，透過基於所以特徵下所構成的所有特徵向量組合，若以每個特徵向量平方為機率(Probability)，因此進一步計算每一種"組合"在整體機率分佈下所占的比例，可觀察在pca0和pca1的維度下資料的切分狀況
 >![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/f30b7929-093b-423f-bb76-42ce6a51966f)
+
+![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/1358be46-6675-46eb-b6ab-ec9b62077560)
 
 
 **Training with different algorithm**
@@ -60,24 +62,15 @@
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/237c390d-dd95-4aeb-b7c4-ad728708450b)
 
 **ROC curve to estimation and Caliabration** 
->在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
+> 以下採用三種演算法訓練:
+> 1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索
+> 2.使用Logistic Regression方式進行預測
+> 3.使用隨機森林方式進行預測
+> 在經過ROC曲線計算後，發現準確度(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確。
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/c0fd791d-390f-44f2-b457-f4fb958c17f7)
+> 從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP多層感知層以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，此代表可能出現
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
-
-
-**Optimizing the result** 
-若進一步嘗試優化其結果，這裡採用了三種方式，如下:
-1.針對MLP進行超參數方式優化，使用交叉驗證(cross validation)的方式進行網格搜索
-2.使用Logistic Regression方式進行預測
-3.使用隨機森林方式進行預測
-藉由以上三種方式並透過Calibration curve衡量後，發現原來表現較好的Logistic regression模型的分數稍無降低了，
-
-使用MLP多層感知層、Logistic regreesion 以及隨機森林的免算法進行ROC計算後發現，都有很好的準確度，從預測出來的機率直方圖來看，發現預測的機率都會極端分布在0和1，此代表可能出現
-
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/50e217d0-24cf-448b-a3f7-6b825fc11944)
-
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/b3b60be0-4149-410d-8b13-563d1b9dcb01)
 
 
 **結果與討論**
