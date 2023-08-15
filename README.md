@@ -22,7 +22,6 @@
 - **Correlation of features and histogram plot to decide the importance of features**
 - **Dimensionally reduction with PCA by Machine failure** 
 - **Training with different algorithm (Logistic regression, random forest)**
-- **ROC curve to estimation and Caliabration**
   
 ### 1. **Train, Test data stastics and visualization**
 > 在我們對資料沒有任何domain knowledge 的情況下，直接對所有的特徵進行密度分析、相關性下手或許是不錯的選擇。由於我們最關心的是最後的Machine failure的結果，從tain, test 數據上來看，初步可觀察到資料可發現在type欄位的部分H,M,L僅影響Air temp./ Process tem. /Rotational speed/ Torque/ Tool wear等五個特徵下的數量差異，分布上幾乎一致，而從這五個特徵目前還看不出和Machine failure顯著的關係，而"品質"在各特徵中分布是相當一致的
@@ -72,12 +71,6 @@
 > 從對應上圖的機率分布直方圖來看，由於Logistic regression更真實反映了數據"機率"分布的表現，相較之下，使用MLP以及隨機森林的免算法進行ROC計算後發現，發現預測的機率都會極端分布在0和1，雖然代表
 
 ![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/9c097715-699b-4d24-8a38-553ab72c2f59)
-
-
-### 5. **ROC curve to estimation and Caliabration** 
-> 在經過ROC曲線計算後，發現正確率(Accuracy)高達97%，從校正曲線(Calibraiton curve)來衡量[3]，當我們透過不同模型繪製出來的曲線越靠近中間的黑色虛線，便代表結果越準確
-
-![image](https://github.com/JunTingLu/Binary-Classification-of-MachineFailure/assets/135250298/c0fd791d-390f-44f2-b457-f4fb958c17f7)
 
 
 **結果與討論**
